@@ -16,7 +16,7 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#skyprogram"></use>
         </svg>
       </a>
-      <a href="/templates/bookmarks.htmlmarks.html" class="header__bookmark-btn">
+      <a href="/bookmarks" class="header__bookmark-btn">
         <img src="../../static/img/bookmark.png" alt="" class="header__bookmark-icon" width="28">
         <span class="header__bookmark-counter">{{ bookmarks }}</span>
       </a>
@@ -37,17 +37,17 @@
 
       <div class="items__item item">
         <div class="item__top">
-          <a href="/templates/user-feed.html-feed.html" class="item__head">
+          <a href="/users/{{ post.poster_name }}" class="item__head">
             <div class="item__ava-wrap">
               <img src="{{ post.poster_avatar }}" alt="" class="item__ava" width="47">
             </div>
             <span class="item__username">{{ post.poster_name }}</span>
           </a>
         </div>
-        <a href="/{{ post.pk }}" class="item__post-link">
+        <a href="/posts/{{ post.pk }}" class="item__post-link">
           <img src="{{ post.pic }}" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr">{{ post.content | truncate(trunc) }}</p>
+        <p class="item__descr">{{ post.content | truncate(trunc) }}<a href="/posts/{{ post.pk }}" class="item__btn-more">Еще</a></p>
         <div class="item__post-info">
 
             <span class="item__comments-counter">
@@ -70,10 +70,14 @@
           </div>
         </div>
         <div class="item__post-bottom">
-          <a href="/{{ post.pk }}" class="item__btn-more">Подробнее</a>
-          <button type="button" class="item__bookmark-btn">
+          <a href="/posts/{{ post.pk }}" class="item__btn-more">Подробнее</a>
+          <form action="/bookmark" method="post">
+              <input type="hidden" value="{{ post.pk }}" name="pk">
+              <input type="hidden" value="{{ bookmark[post.pk] }}" name="bbn">
+          <button type="submit" class="item__bookmark-btn {% if bookmark[post.pk] %}active{% endif %}">
             <img src="../../static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
           </button>
+          </form>
         </div>
       </div>
 

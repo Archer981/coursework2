@@ -5,24 +5,22 @@ class CommentsDAO:
     def __init__(self, path):
         self.path = path
         self.counter = {}
-        for comment in self.load_data():
+        for comment in self.get_comments():
             self.counter.setdefault(comment['post_id'], 0)
             self.counter[comment['post_id']] += 1
 
     def __repr__(self):
         return 'CommentsDAO - Модуль доступа к данным с комментариями'
 
-    def load_data(self):
+    def get_comments(self):
+        """Получение всех комментариев"""
         with open(self.path, 'r', encoding='utf-8') as file:
-            read_comments = json.load(file)
-        return read_comments
+            return json.load(file)
 
-    def load_all(self):
-        return self.load_data()
-
-    def load_comments(self, pk):
+    def get_comments_by_post_id(self, pk):
+        """Получение комментариев по номеру поста"""
         comments = []
-        for comment in self.load_all():
+        for comment in self.get_comments():
             if comment['post_id'] == pk:
                 comments.append(comment)
         return comments

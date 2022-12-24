@@ -28,7 +28,7 @@
     <section class="items">
       <div class="items__item item item--post">
         <div class="item__top">
-          <a href="/templates/user-feed.html-feed.html" class="item__head">
+          <a href="/users/{{ post.poster_name }}" class="item__head">
             <div class="item__ava-wrap">
               <img src="{{ post.poster_avatar }}" alt="" class="item__ava" width="47">
             </div>
@@ -47,7 +47,7 @@
         </a>
         <div class="item__descr">
           <p class="item__text">
-            {{ post.content }}
+            {{ post.content | safe }}
           </p>
 
         </div>
