@@ -6,8 +6,8 @@ from config import Development, Production
 
 dotenv.load_dotenv(override=True)
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 if os.environ.get('APP_CONFIG') == 'development':
     app.config.from_object(Development)
