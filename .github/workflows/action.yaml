@@ -7,8 +7,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build
-        uses: docker build -t ${{ secrets.IMAGE_TAG }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+        run: docker build -t ${{ secrets.IMAGE_TAG }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: login
-        uses: docker login -u ${{ secrets.DOCKER_USER }} -p {{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p {{ secrets.DOCKER_PASSWORD }}
       - name: push
-        uses: docker push ${{ secrets.IMAGE_TAG }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+        run: docker push ${{ secrets.IMAGE_TAG }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID
