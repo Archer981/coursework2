@@ -1,5 +1,4 @@
 name: CI
-description: "home_work_26"
 on: [push]
 jobs:
   build:
