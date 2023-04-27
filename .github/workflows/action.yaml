@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "deploy/docker-compose.yaml"
           target: "deploy"
-          stript_components: 1
+          strip_components: 1
