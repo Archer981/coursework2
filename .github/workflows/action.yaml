@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        usus: checkout@v3
+        uses: checkout@v3
       - name: render config
         run: |
           mkdir deploy
