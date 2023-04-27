@@ -44,3 +44,4 @@ jobs:
           script: |
             cd deploy
             docker-compose up -d
+
