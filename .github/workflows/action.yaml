@@ -35,4 +35,3 @@ jobs:
           source: "deploy/docker-compose.yaml"
           target: "deploy"
           script_components: 1
-
