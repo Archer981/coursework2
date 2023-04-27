@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  api:
+    image: archer981/home_works:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    ports:
+      - 25000:25000
